@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0B1220] text-white">
+    <main className="min-h-screen bg-[#111827] text-white">
        <Navbar />
       <section className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-20 lg:flex-row lg:items-center lg:gap-16">
         
@@ -27,7 +27,7 @@ export default function Home() {
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
             2S0 Technologies bridges the digital divide through AI, data,
             software development and digital skills training—creating
-            solutions that empower people and transform communities.
+            solutions that empower people and transform communities in rural areas.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
