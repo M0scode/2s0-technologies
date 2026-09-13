@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function About() {
   return (
     <section
@@ -10,7 +14,12 @@ export default function About() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 
           {/* Left side */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-400">
               Our Mission
             </p>
@@ -18,10 +27,15 @@ export default function About() {
             <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
               Technology Should Create Opportunities — Not Barriers.
             </h2>
-          </div>
+          </motion.div>
 
           {/* Right side */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+          >
             <p className="text-lg leading-8 text-slate-300">
               At 2S0 Technologies, we believe technology has the power to
               connect people to knowledge, opportunity and economic
@@ -33,7 +47,7 @@ export default function About() {
               make better decisions while empowering communities with the
               skills they need to participate in the digital economy.
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* Principles */}
