@@ -1,8 +1,14 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+
 const team = [
   {
     name: "Sandiso Magwaza",
     role: "Data Scientist",
     initials: "SM",
+    image: "/sandiso.png",
     bio: "A passionate Data Scientist and graduate of Explore AI Academy, Sandiso brings deep expertise in data-driven solutions and machine learning.",
     vision:
       "His vision to harness the power of AI for rural empowerment laid the foundation for 2S0 Technologies.",
@@ -11,6 +17,7 @@ const team = [
     name: "Lethu Zama",
     role: "Data Analyst",
     initials: "LZ",
+    image: "/lethu.jpg",
     bio: "A skilled Data Analyst and graduate of Explore AI Academy, Lethu combines analytical precision with a deep understanding of community needs.",
     vision:
       "His commitment to translating data into impact drives the company's mission forward every day.",
@@ -26,7 +33,13 @@ export default function Team() {
       <div className="mx-auto max-w-7xl">
 
         {/* Section heading */}
-        <div className="max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="max-w-3xl"
+        >
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">
             Our Team
           </p>
@@ -41,7 +54,7 @@ export default function Team() {
             commitment to creating meaningful opportunities through
             technology.
           </p>
-        </div>
+        </motion.div>
 
         {/* Team members */}
         <div className="mt-16 grid gap-8 md:grid-cols-2">
@@ -53,24 +66,13 @@ export default function Team() {
             >
 
               {/* Photo placeholder */}
-              <div className="relative flex h-72 items-center justify-center overflow-hidden bg-[#0B1220]">
-
-                {/* Decorative background */}
-                <div className="absolute inset-0 opacity-30">
-                  <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:32px_32px]" />
-                </div>
-
-                {/* Initials */}
-                <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-blue-400/30 bg-blue-600/10 shadow-[0_0_60px_rgba(37,99,235,0.2)]">
-                  <span className="text-4xl font-bold text-blue-400">
-                    {member.initials}
-                  </span>
-                </div>
-
-                {/* Coming soon label */}
-                <span className="absolute bottom-5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-400 backdrop-blur-sm">
-                  Photo coming soon
-                </span>
+              <div className="relative h-96 overflow-hidden bg-[#0B1220]">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-contain"
+                />
               </div>
 
               {/* Profile information */}
