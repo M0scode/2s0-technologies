@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const projects = [
   {
     category: "Data & Analytics",
@@ -32,7 +36,13 @@ export default function Projects() {
 
         {/* Heading */}
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-          <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="max-w-3xl"
+          >
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-400">
               Featured Work
             </p>
@@ -46,7 +56,7 @@ export default function Projects() {
               technology that addresses real challenges and creates
               measurable opportunities.
             </p>
-          </div>
+          </motion.div>
 
           <div className="text-sm font-semibold text-blue-400">
             More projects coming soon →
@@ -55,9 +65,17 @@ export default function Projects() {
 
         {/* Project cards */}
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {projects.map((project) => (
-            <article
+          {projects.map((project, index) => (
+            <motion.article
               key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: "easeOut",
+              }}
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition duration-300 hover:-translate-y-1 hover:border-blue-400/30 hover:bg-white/[0.05]"
             >
               {/* Project visual */}
@@ -108,7 +126,7 @@ export default function Projects() {
                   View project →
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 
