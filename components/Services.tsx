@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const services = [
   {
     title: "Data Analytics & Dashboards",
@@ -58,10 +62,18 @@ export default function Services() {
 
         {/* Service cards */}
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
+          {services.map((service, index) => (
+            <motion.div
               key={service.title}
-              className="group rounded-2xl border border-slate-200 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.12,
+                ease: "easeOut",
+              }}
+              className="group rounded-2xl border border-slate-200 bg-white p-7 transition duration-500 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl"
             >
               {/* Icon */}
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-lg font-bold text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
@@ -82,7 +94,7 @@ export default function Services() {
               <div className="mt-6 text-sm font-semibold text-blue-600">
                 Learn more →
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
